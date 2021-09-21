@@ -35,7 +35,8 @@ const User = db.define('users', {
     isBanned: {
         type: DataTypes.BOOLEAN,
         require: true,
-        allowNull: false
+        allowNull: false,
+        defaultValue: false
     },
     // theme: {
     //    //unknown what will go here 

@@ -1,6 +1,8 @@
 const { DataTypes} = require('sequelize')
 const db = require('../db')
 
+
+//research how to make tables paranoid for 'policy and abuse' reasons. don't implement here probs too much work
 const Comment = db.define('comment', {
     commentID: {
         type: DataTypes.UUID,

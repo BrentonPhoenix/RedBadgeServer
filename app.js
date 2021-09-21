@@ -16,10 +16,10 @@ const controllers = require('./controllers')
 // }) ---------------------------------------------------WORKS
 
 
-// app.use('/users', controllers.userController)
+app.use('/users', controllers.userControllers)
 // app.use('/topic', controllers.topicController)
 // app.use('/posts', controllers.postController)
-app.use('/comment', controllers.commentController)
+// app.use('/comment', controllers.commentController)
 
 
 dbConnection.authenticate()
