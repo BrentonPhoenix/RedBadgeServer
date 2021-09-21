@@ -1,12 +1,12 @@
 const { DataTypes} = require('sequelize')
-
+const db = require('../db')
 
 const Comment = db.define('comment', {
     commentID: {
-        //pending extra reading
-    },
-    username: {
-        //do i actually need this? i think we can get this from req.body of the POST method
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false
     },
     content: {
         type: DataTypes.TEXT,

@@ -1,9 +1,12 @@
 const {DataTypes} = require('sequelize')
-const { all } = require('sequelize/types/lib/operators')
+const db = require('../db')
 
 const User = db.define('users', {
     userID: {
-        // pending research
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false
     },
     username: {
         type: DataTypes.STRING(100),
@@ -34,9 +37,9 @@ const User = db.define('users', {
         require: true,
         allowNull: false
     },
-    theme: {
-        
-    },
+    // theme: {
+    //    //unknown what will go here 
+    // },
 }) 
 
 module.exports = User

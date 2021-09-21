@@ -1,9 +1,12 @@
 const {DataTypes } = require('sequelize')
-
+const db = require('../db')
 
 const Topic = db.define('topics', {
     TopicID: {
-        // look into the uuid before final decision
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false
     },
     TopicTitle: {
         type: DataTypes.STRING,
@@ -24,7 +27,8 @@ const Topic = db.define('topics', {
     communityLocked: {
         type: DataTypes.BOOLEAN,
         allowNull:false,
-        require: true  
+        require: true,
+        defaultValue: true
     }
 })
 

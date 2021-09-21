@@ -1,8 +1,13 @@
 const {DataTypes} = require('sequelize')
+const db = require('../db')
+
 
 const Post = db.define('posts',{
     postID: {
-        // type: DataTypes.TEXT look into the uuid thing before final decision
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false
     },
     postTitle: {
         type: DataTypes.TEXT,
@@ -21,7 +26,7 @@ const Post = db.define('posts',{
         type: DataTypes.TEXT
     },
     order: {
-        type: DataTypes.TINYINT
+        type: DataTypes.INTEGER
     },
 })
 
