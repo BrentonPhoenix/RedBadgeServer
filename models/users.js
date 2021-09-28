@@ -24,12 +24,16 @@ const User = db.define('users', {
     },
     role: {
         type: DataTypes.STRING(50),
-        requrie: true
+        requrie: true,
+        defaultValue: 'User'
     },
     bio: {
         type: DataTypes.TEXT,
     },
     urlProfilePic: {
+        type: DataTypes.STRING(1000)
+    },
+    urlProfilePicAltID: {
         type: DataTypes.STRING(1000)
     },
     isBanned: {

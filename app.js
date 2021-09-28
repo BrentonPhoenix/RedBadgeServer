@@ -2,8 +2,10 @@ require('dotenv').config()
 const Express = require('express')
 const app = Express()
 const dbConnection = require('./db')
-
+app.use(require('./middleware/headers'))
 app.use(Express.json())
+
+
 
 const controllers = require('./controllers')
 
@@ -17,9 +19,9 @@ const controllers = require('./controllers')
 
 
 app.use('/users', controllers.userControllers)
-// app.use('/topic', controllers.topicController)
-// app.use('/posts', controllers.postController)
-// app.use('/comment', controllers.commentController)
+app.use('/topic', controllers.topicControllers)
+app.use('/posts', controllers.postControllers)
+// app.use('/comment', controllers.commentControllers)
 
 
 dbConnection.authenticate()

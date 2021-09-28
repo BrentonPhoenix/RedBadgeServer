@@ -15,7 +15,7 @@ const Post = db.define('posts',{
         require: true
     },
     postContent: {
-        type: DataTypes.TEXT(8000),
+        type: DataTypes.TEXT,
         allowNull: false,
         require: true
     },
@@ -23,7 +23,10 @@ const Post = db.define('posts',{
         type: DataTypes.STRING,
     },
     url: {
-        type: DataTypes.TEXT
+        type: DataTypes.STRING(1000)
+    },
+    urlAltID: {
+        type: DataTypes.STRING(1000)
     },
     order: {
         type: DataTypes.INTEGER
