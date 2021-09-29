@@ -28,7 +28,7 @@ router.post('/create', validateJWT, async(req,res)=>{
 
 //------------------GETALLTOPICS----------------
 
-router.get('/', async(req,res)=>{
+router.get('/',validateJWT, async(req,res)=>{
     try{
         const topics = await TopicModel.findAll()
         res.status(200).json(topics)
@@ -78,8 +78,8 @@ router.get('/:topicID', validateJWT, async(req, res)=>{
         })
         res.status(200).json(myTopic)
     }
-    catch{
-
+    catch(err){
+        console.log(err)
     }
 })
 
@@ -117,14 +117,15 @@ router.put('/update/:topicID', validateJWT, async(req,res)=>{
 
 
 router.delete('/delete/:topicID', validateJWT, async(req,res)=>{
-   const id = req.user.userID
+  
    const topicID = req.params.topicID
+   const userID = req.user.userID
    
    try{
-    const query = {
+    const query ={
         where: {
-            userUserID: id,
-            TopicID: topicID
+            TopicID: topicID,
+            userUserID: userID
         }
     }
     await TopicModel.destroy(query)

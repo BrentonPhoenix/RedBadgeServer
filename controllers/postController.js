@@ -28,8 +28,8 @@ router.post('/create', validateJWT, async(req,res)=>{
 
 //------------------GETallPOSTSinTOPIC----------------
 
-router.get('/',validateJWT, async(req,res)=>{
-    let  topicID = req.body.TopicID// eventual this.state var
+router.get('/:TopicID',validateJWT, async(req,res)=>{
+    let  topicID = req.params.TopicID// eventual this.state var
     try{
         const topicPosts = await PostModel.findAll({
             where: {
@@ -76,7 +76,7 @@ router.get('/:postID', validateJWT, async(req,res)=> {
     }
 } )
 
-//----------------------UPDATETOPIC--------------------
+//----------------------UPDATEPost-------------------
 
 router.put('/update/:postID', validateJWT, async(req,res)=>{
     const{postTitle, url,postContent, postKeywords,topicID} = req.body
