@@ -4,7 +4,7 @@ const UserModel = require('./users')
 const TopicModel = require('./topics')
 const PostModel = require('./posts')
 const CommentModel = require('./comments')
-const User = require('./users')
+// const User = require('./users')
 
 
 

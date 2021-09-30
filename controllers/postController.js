@@ -109,14 +109,14 @@ router.put('/update/:postID', validateJWT, async(req,res)=>{
 
 
 router.delete('/delete/:postID', validateJWT, async(req,res)=>{
-   const id = req.user.userID
+   const userid = req.user.userID
    const postID = req.params.postID
    
    try{
     const query = {
         where: {
-            userUserID: id,
-            postID: postID
+            postID: req.params.postID,
+            userUserID: req.user.userID
         }
     }
     await PostModel.destroy(query)
