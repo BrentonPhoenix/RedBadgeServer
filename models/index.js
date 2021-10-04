@@ -4,6 +4,7 @@ const UserModel = require('./users')
 const TopicModel = require('./topics')
 const PostModel = require('./posts')
 const CommentModel = require('./comments')
+// const User = require('./users')
 
 
 
@@ -12,6 +13,7 @@ const CommentModel = require('./comments')
 //-----USER-----
 UserModel.hasMany(TopicModel)
 UserModel.hasMany(PostModel)
+UserModel.hasMany(CommentModel)
 
 //-----TOPIC-----
 TopicModel.hasMany(PostModel)
@@ -24,7 +26,7 @@ PostModel.belongsTo(UserModel)
 
 //-----COMMENT-----
 CommentModel.belongsTo(PostModel)
-
+CommentModel.belongsTo(UserModel)
 
 module.exports = {
     // dbConnection: db,

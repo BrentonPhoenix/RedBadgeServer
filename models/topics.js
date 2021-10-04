@@ -16,10 +16,14 @@ const Topic = db.define('topics', {
     url: {
         type: DataTypes.STRING(1000),
     },
+    urlImgID: {
+        type: DataTypes.STRING(1000)
+    },
     Active: {
         type: DataTypes.BOOLEAN,
         allowNull:false,
-        require: true
+        require: true,
+        defaultValue: true
     },
     Keywords: {
         type: DataTypes.STRING,

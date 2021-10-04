@@ -1,3 +1,5 @@
 module.exports ={
-    userControllers: require('./userController')
+    userControllers: require('./userController'),
+    topicControllers: require('./topicController'),
+    postControllers: require('./postController')
 }

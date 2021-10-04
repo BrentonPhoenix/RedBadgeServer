@@ -13,7 +13,8 @@ router.post('/register', async (req,res)=> {
         try{
             const User = await UserModel.create({
                 username,
-                password: bcrypt.hashSync(password, 21),
+                password: bcrypt.hashSync(password, 11),
+                
                 // passwordKEY: bcrypt.hashSync(passwordKEY, 20)
             })
             let token = jwt.sign({id: User.userID}, process.env.JWT_SECRET, {expiresIn: '1d'})
@@ -22,14 +23,15 @@ router.post('/register', async (req,res)=> {
                 user: username,
                 sessionToken: token
             })
-        } catch{
+        } catch(err){
             if(err instanceof UniqueConstraintError){
                 res.status(409).json({
                     message: 'Username already in use'
                 })
             }else{
                 res.status(500).json({
-                    message: 'Failed to Register User, please be sure to include at least one number in your password.'
+                    err,
+                    message: 'Failed to Register User, please be sure that your username and password are longer than 6 characters in length.'
                 })
             }
         }
@@ -50,7 +52,8 @@ router.post('/login', async (req,res)=>{
                 let token = jwt.sign({id: loginUser.userID}, process.env.JWT_SECRET, {expiresIn: '1d'})
                 res.status(200).json({
                     message: "Log in successful.",
-                    sessionToken: token
+                    sessionToken: token,
+                    
                 })
             } else{
                 res.status(401).json({
@@ -69,13 +72,45 @@ router.post('/login', async (req,res)=>{
     }
 })
 
+//--------------ProfilePage------------------
+router.get('/', validateJWT, async (req,res) =>{
+    const user = req.user
+    const profileData = [user.username, user.role, user.bio, user.urlProfilePic, user.urlProfilePicAltID]
+    // add profileImgAltId here
+    res.status(200).json(profileData)
+})
 
-router.put('update/bio', validateJWT, async(req,res)=>{
+
+//--------------------GetOtherUserProfile----------------
+
+router.get('/:username', validateJWT, async(req,res)=>{
+    const {username} = req.params
+    
+    try{
+        const otherUser = await UserModel.findOne({
+            where:{
+                username: username
+            }
+        })
+            
+        //add profileImgAltId here
+        res.status(200).json([otherUser.username, otherUser.role, otherUser.bio, otherUser.urlProfilePic])
+    } catch(err) {
+        res.status(500).json({error: `${err}`})
+    } 
+})
+
+
+
+
+
+
+router.put('/bio', validateJWT, async(req,res)=>{
     const { bio } = req.body
-    const userId = req.users.id
+    const id = req.user.userID
     const query = {
         where: {
-            userID: userId
+            userID: id
         }
     }
     const updatedBio = {
@@ -85,9 +120,10 @@ router.put('update/bio', validateJWT, async(req,res)=>{
         const update = await UserModel.update(updatedBio, query)
         res.status(200).json(update)
     } catch(err){
-        res.status(500).json({error: err})
+        res.status(500).json({error: `${err}`})
     }
 } )
+
 
 
 
