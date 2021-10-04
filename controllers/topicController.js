@@ -13,7 +13,6 @@ router.post('/create', validateJWT, async(req,res)=>{
         Active,
         userUserID: req.user.userID,
         communityLocked
-
     }
     try{
         const newTopic = await TopicModel.create(topic)

@@ -60,21 +60,41 @@ router.get('/mine', validateJWT, async(req, res)=>{
 
 //-----------------GETSINGLE-POST-------------------------
 
-router.get('/:postID', validateJWT, async(req,res)=> {
-    const postID = req.params.postID
+// router.get('/:postID', validateJWT, async(req,res)=> {
+//     const postID = req.params.postID
 
+//     try{
+//         const singlePost = await PostModel.findOne({
+//             where:{
+//                 postID: postID,
+//                 userID: req.user.userID
+//             }
+//         })
+//         res.status(200).json(singlePost)
+//     }
+//     catch(err){
+//         res.status(500).json(err)
+//     }
+// } )
+
+router.get('/:postID',validateJWT, async(req, res)=>{
+    const postID = req.params.postID
     try{
-        const singlePost = await PostModel.findOne({
-            where:{
-                postID: postID
+        const myTopic = await TopicModel.findAll({
+            where: {
+            postID: postID,
+ 
             }
         })
-        res.status(200).json(singlePost)
+        res.status(200).json(myTopic)
     }
     catch(err){
-        res.status(500).json(err)
+        console.log(err)
     }
-} )
+})
+
+
+
 
 //----------------------UPDATEPost-------------------
 

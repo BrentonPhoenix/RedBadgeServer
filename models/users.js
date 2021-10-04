@@ -1,4 +1,4 @@
-const {DataTypes} = require('sequelize')
+const { DataTypes } = require('sequelize')
 const db = require('../db')
 
 const User = db.define('users', {
@@ -11,7 +11,7 @@ const User = db.define('users', {
     username: {
         type: DataTypes.STRING(100),
         require: true,
-        allowNull:false,
+        allowNull: false,
         unique: true,
     },
     password: {
@@ -42,9 +42,30 @@ const User = db.define('users', {
         allowNull: false,
         defaultValue: false
     },
-    // theme: {
-    //    //unknown what will go here 
-    // },
-}) 
+    themeFont:{
+        type: DataTypes.STRING
+
+    },
+    themeColorMain: {
+        type: DataTypes.STRING
+
+    },
+    themeColor1: {
+        type: DataTypes.STRING,
+
+    },
+    themeColor2: {
+        type: DataTypes.STRING,
+
+    },
+    themeColor3: {
+        type: DataTypes.STRING,
+
+    },
+    themeColor4: {
+        type: DataTypes.STRING,
+
+    }
+})
 
 module.exports = User

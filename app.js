@@ -28,7 +28,7 @@ dbConnection.authenticate()
     .then(() => dbConnection.sync())
     .then(() => {
         app.listen(process.env.PORT, () => {
-            console.log(`[Server]: App is listening on HIDDEN PORT`)
+            console.log(`[Server]: App is listening on ${PROCESS.env.PORT}`)
         })
     })
     .catch((err) =>{
