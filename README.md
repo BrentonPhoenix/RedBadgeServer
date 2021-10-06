@@ -2,7 +2,7 @@
 
 ---
 
-This is the server side, a client side exists [RedBadgeServer](https://github.com/BrentonPhoenix/RedBadgeClient)
+This is the server side, a client side exists [RedBadgeClient](https://github.com/BrentonPhoenix/RedBadgeClient)
 
 This project is deployed to heroku along with the server here [HyperSpace-SocialMedia](https://hyperspace-sm.herokuapp.com/). It is under a Hobby Developer Account, so it exists under some restrictions however it should suffice for a demo.
 
@@ -12,9 +12,14 @@ This project is deployed to heroku along with the server here [HyperSpace-Social
 
 This project is intended to create a social media site that is tailored to people with ADHD. Currently it is a work in progress. 
 Needs:
+
+
     []- commentController (totally empty at the moment)
+
     []- will probably refine the models a bit in the future
+
     []- friends list(many to many connection)
+
     []- paranoid tables? at least for the comments probably for posts and topics as well, if i implement some sort of private messaging feature THAT needs to be paranoid(policy and abuse reasons). Can you set paranoid tables to dump data after a period of time? Like a year from the date of 'delete'.
 
 ---
