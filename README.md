@@ -12,15 +12,12 @@ This project is deployed to heroku along with the server here [HyperSpace-Social
 
 This project is intended to create a social media site that is tailored to people with ADHD. Currently it is a work in progress. 
 Needs:
+- commentController (totally empty at the moment)
+- will probably refine the models a bit in the future
 
+- friends list(many to many connection)
 
-    []- commentController (totally empty at the moment)
-
-    []- will probably refine the models a bit in the future
-
-    []- friends list(many to many connection)
-
-    []- paranoid tables? at least for the comments probably for posts and topics as well, if i implement some sort of private messaging feature THAT needs to be paranoid(policy and abuse reasons). Can you set paranoid tables to dump data after a period of time? Like a year from the date of 'delete'.
+- paranoid tables? at least for the comments probably for posts and topics as well, if i implement some sort of private messaging feature THAT needs to be paranoid(policy and abuse reasons). Can you set paranoid tables to dump data after a period of time? Like a year from the date of 'delete'.
 
 ---
 
